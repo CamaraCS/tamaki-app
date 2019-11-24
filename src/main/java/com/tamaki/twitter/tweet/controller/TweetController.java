@@ -1,4 +1,4 @@
-﻿package com.tamaki.twitter.tweet.controller;
+package com.tamaki.twitter.tweet.controller;
 
 import javax.inject.Inject;
 
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tamaki.twitter.tweet.exception.ResourceNotFoundException;
 import com.tamaki.twitter.tweet.service.TweetService;
-
 
 @RestController
 @RequestMapping("/tweets")
