@@ -12,10 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tamaki.twitter.tweet.exception.ResourceNotFoundException;
 import com.tamaki.twitter.tweet.service.TweetService;
 
-/**
- *
- * @author Renato.T.Tamaki
- */
 
 @RestController
 @RequestMapping("/tweets")

@@ -17,7 +17,7 @@ import com.tamaki.twitter.tweet.exception.ResourceNotFoundException;
 /**
  *
  * @author Renato.T.Tamaki
- */
+*/
 
 @ControllerAdvice
 public class TweetExceptionHandler extends ResponseEntityExceptionHandler {

@@ -3,7 +3,7 @@ package com.tamaki.twitter.dto;
 /**
  *
  * @author Renato.T.Tamaki
- */
+*/
 
 public class ErrorMessage {
 	

@@ -6,12 +6,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  *
  * @author Renato.T.Tamaki
- */
+*/
 
 @SpringBootApplication
-public class app {
+public class App {
 
-	public static void main(String[] args) {
-		SpringApplication.run(app.class, args);
+	public static void main(final String[] args) {
+		SpringApplication.run(App.class, args);
 	}
 }

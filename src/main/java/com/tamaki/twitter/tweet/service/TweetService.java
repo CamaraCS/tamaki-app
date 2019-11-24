@@ -17,7 +17,7 @@ import twitter4j.conf.ConfigurationBuilder;
 /**
  *
  * @author Renato.T.Tamaki
- */
+*/
 
 @Component
 public class TweetService {
