@@ -11,7 +11,7 @@ phases:
     commands:
       - apt-get update -y
       - apt-get install -y maven
-      - docker login –u $USER –p $LOGIN_PASSWORD
+      -  docker login -u $USER -p $LOGIN_PASSWORD
     runtime-versions:
       java: openjdk8
   build:
