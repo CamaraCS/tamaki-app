@@ -4,24 +4,24 @@ env:
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
   parameter-store:
-	LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
-	USER: /CodeBuild/dockerLoginUser
+    LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
+    USER: /CodeBuild/dockerLoginUser
 phases:
   install:
     commands:
-	  - apt-get update -y
+      - apt-get update -y
       - apt-get install -y maven
-	  - docker login –u $USER –p $LOGIN_PASSWORD
-	runtime-versions:
+      - docker login –u $USER –p $LOGIN_PASSWORD
+    runtime-versions:
       java: openjdk8
   build:
     commands:
       - mvn install
   post_build:
     commands:
-	  - docker build -t docker.io/tamakirtt/alpine_confd_jdk18 -f Dockerfile_alpine_confd_jdk18 .
-	  - docker push docker.io/tamakirtt/alpine_confd_jdk18:latest
-	  - printf '[{"name":"twitte","imageUri":"docker.io/tamakirtt/alpine_confd_jdk18:latest"}]' > imagens.json
+      - docker build -t docker.io/tamakirtt/alpine_confd_jdk18 -f Dockerfile_alpine_confd_jdk18 .
+      - docker push docker.io/tamakirtt/alpine_confd_jdk18:latest
+      - printf '[{"name":"twitte","imageUri":"docker.io/tamakirtt/alpine_confd_jdk18:latest"}]' > imagens.json
 artifacts:
   files:
     - imagens.json
