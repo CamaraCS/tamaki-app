@@ -7,4 +7,4 @@ set -e
 /opt/confd/bin/confd -onetime -backend env -log-level DEBUG
 
 echo "Starting Springboot"
-exec java -jar data/app.jar --spring.profiles.active=default
+exec java -jar data/app.jar --spring.profiles.active=infra
