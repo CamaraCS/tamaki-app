@@ -52,7 +52,7 @@ public class TwitterTweetTest {
 	{
 		mockMvc.perform(get("/tweets/hashtags/#devops")
 	      .accept(MediaType.APPLICATION_JSON))
-	      .andExpect(status().isOk());
+	      .andExpect(status().isNotFound());
 	}
 	 
 }
