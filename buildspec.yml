@@ -16,7 +16,7 @@ phases:
       java: openjdk8
   build:
     commands:
-      - mvn install
+      - mvn package
   post_build:
     commands:
       - docker build -t docker.io/tamakirtt/alpine_confd_jdk18 .
