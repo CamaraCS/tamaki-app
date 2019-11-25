@@ -47,5 +47,12 @@ public class TwitterTweetTest {
 	      .accept(MediaType.APPLICATION_JSON))
 	      .andExpect(status().isOk());
 	}
+	@Test
+	public void testGetAllpollsInvalid() throws Exception 
+	{
+		mockMvc.perform(get("/tweets/hashtags/#devops")
+	      .accept(MediaType.APPLICATION_JSON))
+	      .andExpect(status().isOk());
+	}
 	 
 }
