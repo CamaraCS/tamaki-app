@@ -1,0 +1,6 @@
+[template]
+src = "application.properties.tmpl"
+dest = "/data/application.properties"
+keys = [
+    "/consumer/key", "/consumer/key/secret", "/access/token", "/access/token/secret"
+]

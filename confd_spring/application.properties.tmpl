@@ -20,10 +20,10 @@ management.endpoints.sensitive=false
 management.endpoints.shutdown.enabled=false
 management.endpoints.enabled=false
 management.endpoints.health.enabled=true
-twitter.consumer.key = 
-twitter.consumer.key.secret = 
-twitter.access.token = 
-twitter.access.token.secret = 
+twitter.consumer.key = {{getv "/consumer/key" ""}}
+twitter.consumer.key.secret = {{getv "/consumer/key/secret" ""}}
+twitter.access.token = {{getv "/access/token" ""}}
+twitter.access.token.secret = {{getv "/access/token/secret" ""}}
 
 #spring.data.mongodb.host=localhost
 #spring.data.mongodb.port=27017
