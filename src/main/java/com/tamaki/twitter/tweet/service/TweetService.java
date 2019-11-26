@@ -3,10 +3,18 @@ package com.tamaki.twitter.tweet.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Component;
 
+import com.tamaki.twitter.domain.Pessoa;
+import com.tamaki.twitter.repository.TweetStoreRepository;
+
 import twitter4j.Query;
+import twitter4j.Query.ResultType;
 import twitter4j.QueryResult;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -20,9 +28,13 @@ import twitter4j.conf.ConfigurationBuilder;
 */
 
 @Component
+@EnableMongoRepositories(basePackageClasses = TweetStoreRepository.class)
 public class TweetService {
 	
-
+	private static final Logger LOGGER = LoggerFactory.getLogger(TweetService.class);
+	@Autowired 
+//	private TweetStoreRepository tweetsRepository;
+	
 	@Value("${twitter.consumer.key}")
 	private String twitterConsumerKey;
 	
@@ -49,30 +61,34 @@ public class TweetService {
 		return(twitter);
 	}
 	
-	public List<String> getHashTag(String hashtag){
-		List<String> tweetsrHashTags = new ArrayList<String>();
+	public List<Pessoa> getHashTag(String hashtag){
+//		tweetsRepository.deleteAll();
+		List<Pessoa> tweetsrHashTags = new ArrayList<Pessoa>();
 		try{
 			Twitter twitter = getTwitterInstance();
 			int firstIndex = hashtag.indexOf('#');
 			Query query;
-			if(firstIndex == 0) {
-				query = new Query(hashtag);
-			}else {
-				query = new Query('#' + hashtag);
+			if(firstIndex != 0) {
+				hashtag = '#' + hashtag;
 			}
+			query = new Query(hashtag);
 			query.setCount(100);
+			query.setResultType(ResultType.recent);
 		    QueryResult result = twitter.search(query);
 		    List<Status> tweets = result.getTweets(); 
-		   
 		    for (Status tweet : tweets) {
-		    	tweetsrHashTags.add(" USUARIOS ID " + tweet.getUser().getId());
-		    	tweetsrHashTags.add(" USUARIOS NAME "+ tweet.getUser().getName());
-		    	tweetsrHashTags.add(" MENSAGEM " + tweet.getText() + "#######" + '\n');
-		    	tweetsrHashTags.add(" SEGUIDORES " + tweet.getUser().getFollowersCount() + "#######" + '\n');
+		    	Pessoa pessoa = new Pessoa();
+		    	pessoa.setUserId(tweet.getUser().getId());
+		    	pessoa.setHashTag(hashtag);
+		    	pessoa.setUserName(tweet.getUser().getName());
+		    	pessoa.setMessage(tweet.getText());
+		    	pessoa.setFollower(tweet.getUser().getFollowersCount());
+		    	tweetsrHashTags.add(pessoa);
 		    } 	
 		}catch(TwitterException te){
-			tweetsrHashTags.add(te.getMessage());
+			LOGGER.error("Falha na consulta das HashTags",te);
 		}
+//		tweetsRepository.saveAll(tweetsrHashTags);
 		return(tweetsrHashTags);
 	}
 }

@@ -44,14 +44,14 @@ public class TwitterTweetTest {
 	public void testGetAllpolls() throws Exception 
 	{
 		mockMvc.perform(get("/tweets/hashtags/devops")
-	      .accept(MediaType.APPLICATION_JSON))
+	      .accept(MediaType.APPLICATION_JSON_UTF8))
 	      .andExpect(status().isOk());
 	}
 	@Test
 	public void testGetAllpollsInvalid() throws Exception 
 	{
 		mockMvc.perform(get("/tweets/hashtags/#devops")
-	      .accept(MediaType.APPLICATION_JSON))
+	      .accept(MediaType.APPLICATION_JSON_UTF8))
 	      .andExpect(status().isNotFound());
 	}
 	 
