@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 //import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -19,9 +20,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.tamaki.twitter.App;
 
+@PropertySource("classpath:application-infra.properties")
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = App.class)
-//@SpringApplicationConfiguration(classes = App.class)
 @WebAppConfiguration
 public class TwitterTweetTest {
 	
@@ -34,12 +35,7 @@ public class TwitterTweetTest {
 	public void setup(){
 		mockMvc = webAppContextSetup(webApplicationContext).build();
 	}
-	
-//	@Test
-//	public void testGetAllpolls() throws Exception{
-//		mockMvc.perform(get("/tweets/hashtags/devops"))
-//			.andExpect(status().isOk());
-//	}
+
 	@Test
 	public void testGetAllpolls() throws Exception 
 	{
@@ -54,5 +50,4 @@ public class TwitterTweetTest {
 	      .accept(MediaType.APPLICATION_JSON_UTF8))
 	      .andExpect(status().isNotFound());
 	}
-	 
 }
