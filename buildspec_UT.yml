@@ -17,4 +17,4 @@ phases:
       java: openjdk8
   build:
     commands:
-      - mvn test -Dtwitter.consumer.key="$twitter.consumer.key" -Dtwitter.consumer.key.secret="$twitter.consumer.key.secret" -Dtwitter.access.token="$twitter.access.token" -Dtwitter.access.token.secret="$twitter.access.token.secret"
+      - mvn test -Dtwitter.consumer.key=$twitter.consumer.key -Dtwitter.consumer.key.secret=$twitter.consumer.key.secret -Dtwitter.access.token=$twitter.access.token -Dtwitter.access.token.secret=$twitter.access.token.secret
