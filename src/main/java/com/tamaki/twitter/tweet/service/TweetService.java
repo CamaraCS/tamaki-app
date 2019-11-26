@@ -33,7 +33,7 @@ public class TweetService {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(TweetService.class);
 	@Autowired 
-//	private TweetStoreRepository tweetsRepository;
+	private TweetStoreRepository tweetsRepository;
 	
 	@Value("${twitter.consumer.key}")
 	private String twitterConsumerKey;
@@ -62,7 +62,7 @@ public class TweetService {
 	}
 	
 	public List<Pessoa> getHashTag(String hashtag){
-//		tweetsRepository.deleteAll();
+		tweetsRepository.deleteAll();
 		List<Pessoa> tweetsrHashTags = new ArrayList<Pessoa>();
 		try{
 			Twitter twitter = getTwitterInstance();
@@ -88,7 +88,7 @@ public class TweetService {
 		}catch(TwitterException te){
 			LOGGER.error("Falha na consulta das HashTags",te);
 		}
-//		tweetsRepository.saveAll(tweetsrHashTags);
+		tweetsRepository.saveAll(tweetsrHashTags);
 		return(tweetsrHashTags);
 	}
 }
