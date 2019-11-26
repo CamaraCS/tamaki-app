@@ -6,6 +6,11 @@ env:
   parameter-store:
     LOGIN_PASSWORD: /CodeBuild/dockerLoginPassword
     USER: /CodeBuild/dockerLoginUser
+    CONSUMER_KEY: /CodeBuild/consumer_key
+    CONSUMER_KEY_SECRET: /CodeBuild/consumer_key_secret
+    ACCESS_TOKEN: /CodeBuild/access_token
+    ACCESS_TOKEN_SECRET: /CodeBuild/access_token_secret
+    
 phases:
   install:
     commands:
@@ -16,7 +21,7 @@ phases:
       java: openjdk8
   build:
     commands:
-      - mvn package
+      - mvn package -Dtwitter.consumer.key=$CONSUMER_KEY -Dtwitter.consumer.key.secret=$CONSUMER_KEY_SECRET -Dtwitter.access.token=$ACCESS_TOKEN -Dtwitter.access.token.secret=$ACCESS_TOKEN_SECRET
   post_build:
     commands:
       - docker build -t docker.io/tamakirtt/alpine_confd_jdk18 .
