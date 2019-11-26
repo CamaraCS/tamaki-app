@@ -2,5 +2,5 @@
 src = "application.properties.tmpl"
 dest = "/application-infra.properties"
 keys = [
-    "/consumer/key", "/consumer/key/secret", "/access/token", "/access/token/secret"
+    "/consumer/key", "/consumer/key/secret", "/access/token", "/access/token/secret", "/mongodb/host"
 ]
