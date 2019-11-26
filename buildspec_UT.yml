@@ -3,6 +3,11 @@ version: 0.2
 env:
   variables:
     JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+  parameter-store:    
+    twitter.consumer.key: /CodeBuild/consumer_key
+    twitter.consumer.key.secret: /CodeBuild/consumer_key_secret
+    twitter.access.token: /CodeBuild/access_token
+    twitter.access.token.secret: /CodeBuild/access_token_secret
 phases:
   install:
     commands:
@@ -12,4 +17,4 @@ phases:
       java: openjdk8
   build:
     commands:
-      - mvn test
+      - mvn test -Dtwitter.consumer.key="$twitter.consumer.key" -Dtwitter.consumer.key.secret="$twitter.consumer.key.secret" -Dtwitter.access.token="$twitter.access.token" -Dtwitter.access.token.secret="$twitter.access.token.secret"
