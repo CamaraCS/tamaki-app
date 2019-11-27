@@ -8,6 +8,7 @@ env:
     CONSUMER_KEY_SECRET: /CodeBuild/consumer_key_secret
     ACCESS_TOKEN: /CodeBuild/access_token
     ACCESS_TOKEN_SECRET: /CodeBuild/access_token_secret
+    MONGODB_HOST: /CodeBuild/CodeBuild/MONGODB_HOST
 phases:
   install:
     commands:
@@ -17,4 +18,4 @@ phases:
       java: openjdk8
   build:
     commands:
-      - mvn test -Dtwitter.consumer.key=$CONSUMER_KEY -Dtwitter.consumer.key.secret=$CONSUMER_KEY_SECRET -Dtwitter.access.token=$ACCESS_TOKEN -Dtwitter.access.token.secret=$ACCESS_TOKEN_SECRET
+      - mvn test -Dtwitter.consumer.key=$CONSUMER_KEY -Dtwitter.consumer.key.secret=$CONSUMER_KEY_SECRET -Dtwitter.access.token=$ACCESS_TOKEN -Dtwitter.access.token.secret=$ACCESS_TOKEN_SECRET -Dspring.data.mongodb.host=$MONGODB_HOST
