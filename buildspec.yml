@@ -27,7 +27,7 @@ phases:
     commands:
       - docker build -t docker.io/tamakirtt/alpine_confd_jdk18 .
       - docker push docker.io/tamakirtt/alpine_confd_jdk18:latest
-      - printf '[{"name":"twitte","imageUri":"docker.io/tamakirtt/alpine_confd_jdk18:latest"}]' > imagens.json
+      - printf '[{"name":"twitter","imageUri":"docker.io/tamakirtt/alpine_confd_jdk18:latest"}]' > imagens.json
 artifacts:
   files:
     - imagens.json
