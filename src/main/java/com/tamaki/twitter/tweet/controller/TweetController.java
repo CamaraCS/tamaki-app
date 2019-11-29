@@ -23,24 +23,22 @@ public class TweetController {
 	@Inject
 	private TweetService twitterService;
 	
-	private TweetStoreService twitterStoreService;
-	
 	@RequestMapping(value="/hashtags/{hashTag}", method=RequestMethod.GET)
 	public ResponseEntity<?> getHashTag(@PathVariable String hashTag) throws TwitterException{
 		if((null == hashTag) || "".equals(hashTag)){
 			throw new ResourceNotFoundException("HashTag não Fornecida"); 
 		}
 		Iterable<Pessoa> hashTags = twitterService.getHashTag(hashTag);
-//		if(twitterService.getHashTag(hashTag).isEmpty()){
-//			return(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-//		}
+		if(twitterService.getHashTag(hashTag).isEmpty()){
+			return(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+		}
 		return(new ResponseEntity<>(hashTags, HttpStatus.OK));
 	}
 	
 	@RequestMapping(value="/list/{hashTag}", method=RequestMethod.GET)
 	public ResponseEntity<?> twitterService(@PathVariable String hashTag) throws TwitterException{
 		if((null == hashTag) || "".equals(hashTag)){
-			throw new ResourceNotFoundException("HashTag não Fornecida"); 
+			throw new ResourceNotFoundException("HashTag não cadastrada no Banco de Dados"); 
 		}
 		Iterable<Pessoa> hashTags = twitterService.listDBHashTag(hashTag);
 		if(twitterService.listDBHashTag(hashTag).isEmpty()){
@@ -52,7 +50,7 @@ public class TweetController {
 	@RequestMapping(value="/toplist/{hashTag}", method=RequestMethod.GET)
 	public ResponseEntity<?> twitterTopService(@PathVariable String hashTag) throws TwitterException{
 		if((null == hashTag) || "".equals(hashTag)){
-			throw new ResourceNotFoundException("HashTag não Fornecida"); 
+			throw new ResourceNotFoundException("HashTag não cadastrada no Banco de Dados"); 
 		}
 		Iterable<Pessoa> hashTags = twitterService.listDBTopHashTag(hashTag);
 		if(twitterService.listDBTopHashTag(hashTag).isEmpty()){
