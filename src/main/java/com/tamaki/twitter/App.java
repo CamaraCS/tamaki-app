@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 */
 
 @SpringBootApplication
-@ComponentScan({ "com.tamaki.twitter.tweet.controller", "com.tamaki.twitter.tweet.service", "com.tamaki.twitter.tweet.exception" })
+//@ComponentScan({ "com.tamaki.twitter.tweet.controller", "com.tamaki.twitter.tweet.service", "com.tamaki.twitter.tweet.exception" })
 public class App {
 
 	public static void main(final String[] args) {

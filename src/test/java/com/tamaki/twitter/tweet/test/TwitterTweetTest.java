@@ -37,16 +37,44 @@ public class TwitterTweetTest {
 	}
 
 	@Test
-	public void testGetAllpolls() throws Exception 
+	public void testGetTweets() throws Exception 
 	{
 		mockMvc.perform(get("/tweets/hashtags/devops")
 	      .accept(MediaType.APPLICATION_JSON_UTF8))
 	      .andExpect(status().isOk());
 	}
 	@Test
-	public void testGetAllpollsInvalid() throws Exception 
+	public void testGetTweetsInvalid() throws Exception 
 	{
 		mockMvc.perform(get("/tweets/hashtags/#devops")
+	      .accept(MediaType.APPLICATION_JSON_UTF8))
+	      .andExpect(status().isNotFound());
+	}
+	@Test
+	public void testGetListTweets() throws Exception 
+	{
+		mockMvc.perform(get("/tweets/list/devops")
+	      .accept(MediaType.APPLICATION_JSON_UTF8))
+	      .andExpect(status().isOk());
+	}
+	@Test
+	public void testGetListTweetsInvalid() throws Exception 
+	{
+		mockMvc.perform(get("/tweets/list/aa")
+	      .accept(MediaType.APPLICATION_JSON_UTF8))
+	      .andExpect(status().isNotFound());
+	}
+	@Test
+	public void testGetTopListTweets() throws Exception 
+	{
+		mockMvc.perform(get("/tweets/toplist/devops")
+	      .accept(MediaType.APPLICATION_JSON_UTF8))
+	      .andExpect(status().isOk());
+	}
+	@Test
+	public void testGetTopListTweetsInvalid() throws Exception 
+	{
+		mockMvc.perform(get("/tweets/toplist/aa")
 	      .accept(MediaType.APPLICATION_JSON_UTF8))
 	      .andExpect(status().isNotFound());
 	}
