@@ -1,4 +1,4 @@
-![License MIT](https://img.shields.io/badge/license-MIT-blue.svg) [![](https://img.shields.io/docker/pulls/tamakirtt/alpine_confd_jdk18.svg)](https://hub.docker.com/tamakirtt/alpine_confd_jdk18 'Tamaki-app') [![](https://img.shields.io/docker/pulls/tamakirtt/mongo.svg)](https://hub.docker.com/tamakirtt/mongo 'Mongo')
+![License MIT](https://img.shields.io/badge/license-MIT-blue.svg) [![](https://img.shields.io/docker/pulls/tamakirtt/alpine_confd_jdk18.svg)](https://hub.docker.com/r/tamakirtt/alpine_confd_jdk18 'Tamaki-app') [![](https://img.shields.io/docker/pulls/tamakirtt/mongo.svg)](https://hub.docker.com/r/tamakirtt/mongo 'Mongo')
 
 Esse projeto utiliza as seguintes tecnologias:
 
