@@ -33,12 +33,12 @@ Esses valores devem ser incluidos nos arquivos
     $ mvn package
 
 Criação do Container
-		$ docker build -t docker.io/tamakirtt/alpine_confd_jdk18 .
-		$ docker push docker.io/tamakirtt/alpine_confd_jdk18:latest
+	$ docker build -t docker.io/tamakirtt/alpine_confd_jdk18 .
+	$ docker push docker.io/tamakirtt/alpine_confd_jdk18:latest
 		
 ### Base Imagem Docker
 	
-As imagens bases para o mongodb esta disponovel na pasta mongoDB do projeto.
+A imagem base para o mongodb está disponível na pasta mongoDB do projeto.
 	
 ### Iniciar o container Twitter
 
