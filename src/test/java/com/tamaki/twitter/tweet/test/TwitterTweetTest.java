@@ -31,6 +31,8 @@ public class TwitterTweetTest {
 	
 	private MockMvc mockMvc;
 	
+	int NumeroConta='teste numero conta';
+	
 	@Before
 	public void setup(){
 		mockMvc = webAppContextSetup(webApplicationContext).build();
