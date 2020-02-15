@@ -58,13 +58,6 @@ public class TwitterTweetTest {
 	      .andExpect(status().isOk());
 	}
 	@Test
-	public void testGetListTweetsInvalid() throws Exception 
-	{
-		mockMvc.perform(get("/tweets/list/aa")
-	      .accept(MediaType.APPLICATION_JSON_UTF8))
-	      .andExpect(status().isNotFound());
-	}
-	@Test
 	public void testGetTopListTweets() throws Exception 
 	{
 		mockMvc.perform(get("/tweets/toplist/devops")
