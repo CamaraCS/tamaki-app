@@ -31,7 +31,7 @@ public class TwitterTweetTest {
 	
 	private MockMvc mockMvc;
 	
-	int NumeroConta='teste numero conta';
+	int senha='teste numero conta';
 	
 	@Before
 	public void setup(){
